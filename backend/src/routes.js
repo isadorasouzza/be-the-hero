@@ -23,6 +23,6 @@ routes.delete('/incidents/:id', CelebrateController.incidentsDelete() ,IncidentC
 
 routes.get('/profile',ProfileController.index);
 
-routes.put('/profile',IncidentController.update);
+routes.put('/profile',ProfileController.update); /* Nova funcionalidade */
 
 module.exports = routes;
