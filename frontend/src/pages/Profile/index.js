@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import{Link, useHistory} from 'react-router-dom';
-import{FiPower, FiTrash2} from 'react-icons/fi';
+import{FiPower, FiTrash2,FiEdit} from 'react-icons/fi';
 
 import api from '../../services/api';
 
@@ -15,6 +15,11 @@ export default function (){
     const history = useHistory ();
     const ongName = localStorage.getItem('OngName');
     const ongId = localStorage.getItem('OngId');
+
+    const [title, setTitle] = useState('');
+    const [discription, setDiscription] = useState('');
+    const [value, setValue] = useState('');
+
 
     useEffect(() => {
         api.get('profile', {
@@ -39,6 +44,7 @@ export default function (){
             alert('Erro ao deletar caso, tente novamente');
         }
     }
+
 
     function handlelogout(){
         localStorage.clear();
@@ -70,9 +76,11 @@ export default function (){
                     <strong>VALOR:</strong>
                     <p>{Intl.NumberFormat('pt-BR',{style: 'currency', currency: 'BRL'}).format(incident.value)}</p>
                     
+                    
                     <button type="button" onClick={()=>handleDeleteIncident(incident.id)}>
                         <FiTrash2 size={20} color="#a8a8b3"/>
                     </button>
+
                 </li>
                 ))}
 

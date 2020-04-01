@@ -23,7 +23,7 @@ export default function Logon(){
 
             history.push('/profile');
         }catch(err){
-            alert('Falha no login, tente novamente');
+            alert('Usuário não encontrado');
         }
     }
     return (

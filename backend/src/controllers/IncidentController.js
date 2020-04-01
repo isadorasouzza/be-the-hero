@@ -54,5 +54,23 @@ module.exports = {
         await connection('incidents').where('id',id).delete;
 
         return response.status(204).send();
-     }
+     },
+
+
+     async update (request, response) {
+        const {title, discription, value} = request.body;
+        const ong_id = request.headers.authorization;
+
+    const [id] = await connection('incidents').update({
+        title,
+        discription,
+        value,
+        ong_id,
+    }).where('id',id);
+        return response.json({id});
+      }
+ 
+     
+
+   
 };
